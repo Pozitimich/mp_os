@@ -1,0 +1,4 @@
+config path:
+D:/Study/Programming/GitHub/mp_os/mp_os/logger/client_logger/tests/log_config.json
+path in JSON:
+blabla:builder.config

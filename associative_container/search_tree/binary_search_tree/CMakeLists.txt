@@ -1,10 +1,6 @@
 cmake_minimum_required(VERSION 3.21)
 project(mp_os_assctv_cntnr_srch_tr_bnr_srch_tr)
 
-add_subdirectory(AVL_tree)
-add_subdirectory(red_black_tree)
-add_subdirectory(scapegoat_tree)
-add_subdirectory(splay_tree)
 add_subdirectory(tests)
 add_library(
         mp_os_assctv_cntnr_srch_tr_bnr_srch_tr
@@ -27,6 +23,6 @@ set_target_properties(
         DESCRIPTION "binary search tree implementation library"
         LANGUAGES CXX
         LINKER_LANGUAGE CXX
-        CXX_STANDARD 14
+        CXX_STANDARD 20
         CXX_STANDARD_REQUIRED ON
         CXX_EXTENSIONS OFF)

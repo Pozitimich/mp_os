@@ -4,9 +4,33 @@
 #include <logger.h>
 #include "client_logger_builder.h"
 
+#include <vector>
+#include <map>
+#include <unordered_map>
+#include <unordered_set>
+#include <fstream>
+#include <memory>
+
 class client_logger final:
     public logger
 {
+    friend class client_logger_builder;
+    
+    using fstream_map = std::map<std::string, std::pair<std::ofstream* const, size_t>>;
+    static fstream_map _all_fstreams;
+    std::vector<std::pair<logger::severity, std::vector<fstream_map::iterator>>> _local_fstreams;
+    std::vector<logger::severity> _console_sevs;
+
+    std::string _format_out;
+
+    client_logger(
+            const std::unordered_map<std::string, 
+                std::unordered_set<logger::severity>> &configuration,
+            const std::unordered_set<logger::severity> &console_stream,
+            std::string const &format);
+    
+    void remove_all_local_references();
+    void remove_reference(const fstream_map::iterator &map_iter);
 
 public:
 
