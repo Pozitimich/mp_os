@@ -16,25 +16,31 @@ public:
     fraction(
         big_integer &&numerator,
         big_integer &&denominator);
+    
+    fraction(
+        std::string const &numerator,
+        std::string const &denominator);
 
 public:
 
-    ~fraction() noexcept;
+    ~fraction() noexcept = default;
 
     fraction(
-        fraction const &other);
+        fraction const &other) = default;
 
     fraction &operator=(
-        fraction const &other);
+        fraction const &other) = default;
 
     fraction(
-        fraction &&other) noexcept;
+        fraction &&other) noexcept = default;
 
     fraction &operator=(
-        fraction &&other) noexcept;
+        fraction &&other) noexcept = default;
 
 public:
 
+    fraction operator-() const;
+    
     fraction &operator+=(
         fraction const &other);
 
@@ -150,6 +156,22 @@ public:
 
     fraction lg(
         fraction const &epsilon) const;
+
+public:
+
+    fraction abs() const;
+    
+    fraction inverse() const;
+    
+private:
+
+    static void equalize_denominators(fraction &a, fraction &b);
+    
+    void simplify();
+
+private:
+
+    static fraction pi();
 
 };
 

@@ -38,8 +38,14 @@ TEST(positive_tests, test1)
             },
         });
     
+    std::stringstream ss1;
     big_integer bigint_1("32850346459076457453464575686784654");
+    ss1 << bigint_1;
+    std::string result_string1 = ss1.str();
+    ss1.clear();
     big_integer bigint_2("423534596495087569087908753095322");
+    ss1 << bigint_1;
+    result_string1 = ss1.str();
     big_integer result_of_sum = bigint_1 + bigint_2;
     
     std::stringstream ss;
